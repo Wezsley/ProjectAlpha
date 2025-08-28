@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Send, Paperclip, Smile, Plus, Search } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { TeamChat } from './TeamChat';
+import { ProjectNotes } from './ProjectNotes';
 
 export const ChatNotes: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'chat' | 'notes'>('chat');
@@ -31,11 +32,19 @@ export const ChatNotes: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex-1 bg-midnight-800 rounded-2xl border border-neon-cyan/10 overflow-hidden flex items-center justify-center">
-        <div className="text-center">
-            <h2 className="text-2xl font-bold text-slate-300">Coming Soon</h2>
-            <p className="text-slate-500 mt-2">{activeTab === 'chat' ? 'Real-time chat functionality' : 'Collaborative notes feature'} is under construction.</p>
-        </div>
+      <div className="flex-1 bg-midnight-800 rounded-2xl border border-neon-cyan/10 overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="h-full"
+          >
+            {activeTab === 'chat' ? <TeamChat /> : <ProjectNotes />}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );

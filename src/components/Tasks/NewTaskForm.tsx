@@ -87,7 +87,7 @@ export const NewTaskForm: React.FC<NewTaskFormProps> = ({ onClose, initialStatus
             className="w-full pl-4 pr-4 py-2 bg-midnight-800 border border-midnight-700 rounded-lg text-slate-100 focus:outline-none focus:ring-2 focus:ring-neon-cyan"
           >
             <option value="">Unassigned</option>
-            {profiles.map(p => <option key={p.id} value={p.id}>{p.full_name || p.username}</option>)}
+            {profiles.map(p => <option key={p.id} value={p.id}>{p.full_name || 'Unnamed User'}</option>)}
           </select>
         </div>
         <div>

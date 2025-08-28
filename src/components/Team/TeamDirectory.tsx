@@ -43,7 +43,7 @@ export const TeamDirectory: React.FC = () => {
               )}
             </div>
             
-            <h3 className="font-semibold text-slate-100 text-lg mb-1">{member.full_name || member.username}</h3>
+            <h3 className="font-semibold text-slate-100 text-lg mb-1">{member.full_name || 'Team Member'}</h3>
             <p className="text-neon-cyan text-sm mb-4">{member.role || 'Team Member'}</p>
             
             <div className="flex items-center justify-center space-x-2">
